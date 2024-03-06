@@ -9,7 +9,7 @@ const app = (0, express_1.default)();
 const port = 3020;
 app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
-    res.json({ name: "Arya" });
+    res.json({ name: "Lekshmi" });
 });
 app.listen(port, () => {
     console.log(`connected successfully on port ${port}`);
