@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { baseUrl } from "./utilis/getApiUrl";
 type nameProps={
-  name:string
+  message:string
 }
 function App() {
   const [name,setName] = useState<nameProps>({
-name:""
+message:""
   })
   const handleClick = async() =>{
-    const data=await fetch(`${baseUrl}`)
-    const result =await data.json()
-    setName(result)
+    const response = await fetch(`${baseUrl}`, {
+      mode: 'no-cors'
+    });
+    const result =await response.json()
+    // setName(result)
     console.log(result,"data");
     
   }
@@ -20,7 +22,7 @@ name:""
     <h1 className="text-5xl text-cyan-500" >Hello Guys</h1>
     <button className="bg-white px-6 py-2 rounded-full" onClick={handleClick}>Click me</button>
     </div>
-    <h1 className="text-5xl text-green-700 text-center mt-5" >{name.name}</h1>
+    <h1 className="text-5xl text-green-700 text-center mt-5" ></h1>
    </div>
   );
 }
