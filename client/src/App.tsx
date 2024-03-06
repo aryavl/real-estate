@@ -8,12 +8,10 @@ function App() {
 message:""
   })
   const handleClick = async() =>{
-    const response = await fetch(`${baseUrl}`, {
-      mode: 'no-cors'
-    });
+    const response = await fetch(`${baseUrl}`);
     const result =await response.json()
-    // setName(result)
-    console.log(result,"data");
+    setName(result)
+    console.log("data",result);
     
   }
   return (
@@ -22,7 +20,7 @@ message:""
     <h1 className="text-5xl text-cyan-500" >Hello Guys</h1>
     <button className="bg-white px-6 py-2 rounded-full" onClick={handleClick}>Click me</button>
     </div>
-    <h1 className="text-5xl text-green-700 text-center mt-5" ></h1>
+    <h1 className="text-5xl text-green-700 text-center mt-5" >{name.message}</h1>
    </div>
   );
 }

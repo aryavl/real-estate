@@ -19,11 +19,11 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+    message: 'HI Arya',
   });
 });
 
-app.use('/api/v1', api);
+app.use('/api', api);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
