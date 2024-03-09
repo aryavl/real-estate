@@ -31,12 +31,14 @@ const Register = () => {
 
     const submitData = async(data:FormData) =>{
         console.log(data,"data reg");
-        await registerUser(data)
-        if(data?.status===200){
-            redirect('/login')
-        }else{
-            setErrormes("User already registered")
-        }
+      const response=  await registerUser(data)
+console.log(response);
+
+        // if(data?.status===200){
+        //     redirect('/login')
+        // }else{
+        //     setErrormes("User already registered")
+        // }
     }
   return (
     <>

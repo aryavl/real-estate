@@ -16,7 +16,9 @@ type FormData = {
 }
 export const registerUser = async(userData:FormData)=>{
     try {
-        const response = await axios.post(`${baseUrl}/api/register`,userData)
+        const response = await axios.post(`http://localhost:5001/api/test`,userData)
+       console.log(response);
+       
         return response.data
     } catch (error:unknown) {
         throw error

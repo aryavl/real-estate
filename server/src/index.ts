@@ -1,8 +1,14 @@
+
+import { prisma } from '../prisma';
 import app from './app';
+require('dotenv').config();
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  /* eslint-disable no-console */
+
+
+app.listen(process.env.PORT, () => {
   console.log(`Listening: http://localhost:${port}`);
-  /* eslint-enable no-console */
+  prisma.$connect()
+    .then(() => console.log("Connected to MongoDB via prisma"))
+    .catch((error) => console.error("Error connecting to MongoDB:", error));
 });

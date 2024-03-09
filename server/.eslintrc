@@ -1,3 +1,4 @@
+
 {
   "root": true,
   "env": {
@@ -9,7 +10,9 @@
       "./tsconfig.json"
     ]
   },
-  "extends": "airbnb-typescript/base",
+  "extends": [
+    "airbnb-typescript/base"
+  ],
   "plugins": [
     "import",
     "@typescript-eslint"
@@ -33,5 +36,19 @@
     "import/resolver": {
       "typescript": {}
     }
-  }
+  },
+  "ignorePatterns": [
+    "tsconfig.json"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "tsconfigRootDir": "./tsconfig.json", // Change this to the appropriate directory path
+        "project": [
+          "./tsconfig.json"
+        ]
+      }
+    }
+  ]
 }
