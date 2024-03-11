@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-catch */
 import axios from "axios";
 import { baseUrl } from "../utilis/getApiUrl";
-
+const localBaseUrl = 'http://localhost:5000'
 export default axios.create({
     baseURL:`${baseUrl}`
 })
@@ -16,7 +16,7 @@ type FormData = {
 }
 export const registerUser = async(userData:FormData)=>{
     try {
-        const response = await axios.post(`http://localhost:5001/api/test`,userData)
+        const response = await axios.post(`${localBaseUrl}/api/register`,userData)
        console.log(response);
        
         return response.data

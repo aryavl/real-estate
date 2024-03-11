@@ -17,6 +17,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
+app.use('/images', express.static('./public/Images'))
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
@@ -25,33 +26,6 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 });
 
 
-// async function main() {
-//   const users= await prisma.user.findUnique({
-//     where:{
-//       email:"bdsfa@gmail.com"
-//     }
-//   })
-//   if(!users){
-//     console.log("non existing");
-    
-//   }
-//   console.log(users);
-  
-// }
-// main()
-// app.get('/users',async(req:Request,res:Response)=>{
-//   const users= await prisma.user.findMany()
-//       res.json({messge:"users",users})
-// })
-// app.post('/api/register',async(req:Request,res:Response)=>{
-//   const users= await prisma.user.findMany()
-//   //       res.json({messge:"users",users})
-//   console.log(users);
-   
-//   res.json({message:"success "})
-
-   
-// })
 app.use('/api/register',registerRoute)
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
