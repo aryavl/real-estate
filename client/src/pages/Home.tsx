@@ -1,5 +1,6 @@
 import Navbar from "../components/User/Navbar";
 import SearchPlace from "../components/home/SearchPlace";
+import Test from "../components/home/Test";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <>
       <Navbar />
        <SearchPlace/>
+    
     </>
   );
 };

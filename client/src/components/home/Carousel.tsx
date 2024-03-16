@@ -1,109 +1,56 @@
-// const images =["https://img.freepik.com/free-photo/blue-house-with-blue-roof-sky-background_1340-25953.jpg","https://t4.ftcdn.net/jpg/01/23/68/71/360_F_123687102_3rPakqjpruQ7hV0yImMYcSYBXGkTCwE5.jpg","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8fDA%3D","https://img.freepik.com/free-photo/blue-house-with-blue-roof-sky-background_1340-25953.jpg","https://t4.ftcdn.net/jpg/01/23/68/71/360_F_123687102_3rPakqjpruQ7hV0yImMYcSYBXGkTCwE5.jpg","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8fDA%3D"]
-
-// import  { useState, useEffect, useCallback } from 'react';
-
-// const Carousel = () => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   const prevSlide = () => {
-//     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-//   };
-
-//   const nextSlide = useCallback(() => {
-//     setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-//   },[]);
-
-//   useEffect(() => {
-//     const intervalId = setInterval(() => {
-//       nextSlide();
-//     }, 2000); 
-
-//     return () => {
-//       clearInterval(intervalId);
-//     };
-//   }, [currentIndex, nextSlide]);
-
-//   return (
-//     <div className="relative">
-//       <div className="overflow-hidden">
-//         <div className="flex">
-//           {images.map((image, index) => (
-//             <div
-//               key={index}
-//               className={`w-full transition-transform duration-500 transform ${
-//                 index === currentIndex ? 'translate-x-0' : 'translate-x-full'
-//               }`}
-//             >
-//               <img src={image} alt={`Image ${index + 1}`} className="block w-full" />
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//       <button className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-md" onClick={prevSlide}>
-//         Previous
-//       </button>
-//       <button className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-md" onClick={nextSlide}>
-//         Next
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default Carousel;
-import  { useState, useEffect, useCallback } from 'react';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { useCallback, useEffect, useState } from 'react';
 
 const Carousel = () => {
-    const images =["https://img.freepik.com/free-photo/blue-house-with-blue-roof-sky-background_1340-25953.jpg","https://t4.ftcdn.net/jpg/01/23/68/71/360_F_123687102_3rPakqjpruQ7hV0yImMYcSYBXGkTCwE5.jpg","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8fDA%3D","https://img.freepik.com/free-photo/blue-house-with-blue-roof-sky-background_1340-25953.jpg","https://t4.ftcdn.net/jpg/01/23/68/71/360_F_123687102_3rPakqjpruQ7hV0yImMYcSYBXGkTCwE5.jpg","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8fDA%3D"]
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const slides = [
+    "https://img.freepik.com/free-photo/beautiful-landscape-with-clear-sky_23-2149721820.jpg?size=626&ext=jpg&ga=GA1.1.735520172.1710547200&semt=ais",
+    "https://img.freepik.com/free-photo/land-plot-with-nature-landscape-location-pin_23-2149937913.jpg",
+    "https://tiger-shree.com/wp-content/uploads/2022/11/istockphoto-1205274326-612x612-1.jpg",
+  ];
+  
+  const [currentImage, setCurrentImage] = useState<number>(0);
+  const autoSlde:boolean = true;
+  const autoSlideInterval:number = 3000
+  const prev = useCallback(() => {
+    setCurrentImage(curr => (curr === 0 ? slides.length - 1 : curr - 1));
+  }, [slides.length]);
 
-//   const prevSlide = () => {
-//     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-//   };
-
-  const nextSlide =useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-  },[images.length]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      nextSlide();
-    }, 5000); // Change slide every 5 seconds
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [currentIndex, nextSlide]);
-
+  const next = useCallback(() => {
+    setCurrentImage(curr => (curr === slides.length - 1 ? 0 : curr + 1));
+  }, [slides.length]);
+useEffect(()=>{
+if(!autoSlde) return
+const slideInterval = setInterval(next,autoSlideInterval)
+return ()=> clearInterval(slideInterval)
+},[autoSlde, autoSlideInterval, next])
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
-        <div className="flex">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`w-full transition-transform duration-500 transform ${
-                index === currentIndex ? 'translate-x-0' : 'translate-x-full'
-              }`}
-            >
-              <img src={image} alt={`Image ${index + 1}`} className="block w-full" />
-            </div>
+    <div className='sm:w-[250px] sm:h-[150px] relative'>
+      <div className='overflow-hidden relative'>
+        <div className='flex transition-transform ease-out duration-500' style={{ transform: `translateX(-${currentImage * 100}%)` }}>
+          {slides.map((imgs, index) => (
+            <img key={index} src={imgs} alt="" className='sm:w-[250px] sm:h-[150px] rounded-lg' />
           ))}
         </div>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center mt-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full bg-gray-500 mx-1 ${
-              index === currentIndex ? 'bg-gray-800' : ''
-            }`}
-          ></button>
-        ))}
+        <div className='absolute inset-0 flex items-center justify-between p-4'>
+          <button onClick={prev} className='sm:p-[0.15rem] p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white'>
+            <ChevronLeft />
+          </button>
+          <button onClick={next} className='z-10 p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white'>
+            <ChevronRight />
+          </button>
+        </div>
+        <div className='absolute bottom-4 right-0 left-0'>
+            <div className='flex items-center justify-center gap-2'>
+                {slides.map((_, i)=>(
+                  <div className={` transition-all w-3 h-3 sm:w-2 sm:h-2 bg-white rounded-full ${currentImage === i ? "p-[0.45rem]":"bg-opacity-50"}`}>
+
+                  </div>
+                ))}
+            </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Carousel;
-
