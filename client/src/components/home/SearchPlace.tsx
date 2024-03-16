@@ -5,7 +5,7 @@ const SearchPlace = () => {
     <>
         <div className='flex flex-col sm:flex-row items-center px-4 py-4 gap-6'>
             
-            <div className='border'>
+            <div className=''>
             <Carousel/>
   
   
