@@ -1,14 +1,12 @@
 import Navbar from "../components/User/Navbar";
-import ParellexSearch from "../components/User/ParellexSearch";
+import SearchPlace from "../components/home/SearchPlace";
+
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <div>
-        {/* <h1 className="text-5xl  text-orange-600 heading">Hellooo Daddy</h1> */}
-        <ParellexSearch/>
-      </div>
+       <SearchPlace/>
     </>
   );
 };

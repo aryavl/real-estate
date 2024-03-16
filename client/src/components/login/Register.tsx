@@ -5,7 +5,7 @@ import { ZodType, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUser } from "../../api/axios";
-import { redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 type FormData = {
@@ -17,6 +17,7 @@ type FormData = {
 }
 const Register = () => {
     const [errormes,setErrormes] = useState<string>('')
+    const navigate = useNavigate()
     const schema:ZodType<FormData> = z.object({
         name:z.string().min(2).max(30),
         email:z.string().email(),
@@ -34,17 +35,17 @@ const Register = () => {
       const response=  await registerUser(data)
 console.log(response);
 
-        // if(data?.status===200){
-        //     redirect('/login')
-        // }else{
-        //     setErrormes("User already registered")
-        // }
+        if(response.status===200){
+            navigate('/login')
+        }else{
+            setErrormes("User already registered")
+        }
     }
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center w-full px-3 mt-2">
-        <form onSubmit={handleSubmit(submitData)} action="" className="w-full md:w-[30%] mt-5">
+      <div className="flex items-center justify-center w-full px-3 mt-2 mb-6">
+        <form onSubmit={handleSubmit(submitData)} action="" className="w-full md:w-[35%] mt-5 border px-8 py-4">
           <h1 className="text-center text-2xl font-bold mb-5">Register</h1>
           {errormes && <span className="text-lg text-red-600">{errormes}</span>}
           <div className="relative flex flex-col ">
@@ -117,9 +118,14 @@ console.log(response);
             {errors.number && <span className="text-red-600">{errors.number.message}</span>}
 
           </div>
-          <div className="w-full mt-4 mb-4">
-            <button   className=" w-full py-3 border borderColor text-[#46ed27] font-bold text-lg hover:scale-105">Register</button>
-          </div>
+              <div className="w-full mt-4 mb-4">
+                <button   className=" w-full py-3 border borderColor text-[#46ed27] font-bold text-lg hover:scale-105">Register</button>
+              </div>
+              <div className="text-center">
+              <Link to={'/login'} className=" text-gray-600">
+                Registered User? Login Here
+              </Link>
+              </div>
         </form>
       </div>
     </>
