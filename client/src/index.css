@@ -4,6 +4,7 @@
 @tailwind utilities;
 :root{
   --main-color:#46ed27;
+  --secondary-color:#f1faa0;
 }
 * {
   box-sizing: border-box;
@@ -14,6 +15,7 @@
 }
 body{
   overflow-x: hidden;
+  /* background-color: #fcfa9b; */
 }
 .borderColor{
   @apply border-[var(--main-color)];

@@ -1,0 +1,4 @@
+.headingFont{
+    font-family:"Whisper", cursive;
+    @apply text-6xl font-semibold
+} 
