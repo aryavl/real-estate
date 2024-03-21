@@ -12,13 +12,13 @@ const Navbar = () => {
     });
   }, []);
   return (
-    <div>
+    <div className=" text-white">
       <div className="flex justify-between items-center w-[80%] mx-auto  logo">
         <div className="w-20 object-cover">
           <img src="/images/log.png" className="" />
         </div>
         <div>
-          <button className="border borderColor px-6 py-2 hover:scale-105 transition ease-out">
+          <button className="border btnbg px-6 py-2 hover:scale-105 transition ease-out">
             Post your Property
           </button>
         </div>

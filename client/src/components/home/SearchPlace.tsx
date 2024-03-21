@@ -4,7 +4,7 @@ import Search from './Search'
 
 const SearchPlace = () => {
   return (
-    <>
+    <div className=' '>
         <div className='flex md:w-[80%] mx-auto sm:pt-10 flex-col sm:flex-row items-center sm:justify-between px-4 py-4 gap-6'>
             
             <div className='sm:hidden'>
@@ -18,7 +18,7 @@ const SearchPlace = () => {
               <Carousel/>
             </div>
         </div>
-    </>
+    </div>
   )
 }
 

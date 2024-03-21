@@ -10,16 +10,27 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
- 
+
   font-family: Arial, Helvetica, sans-serif;
 }
 body{
   overflow-x: hidden;
   /* background-color: #fcfa9b; */
 }
-.borderColor{
-  @apply border-[var(--main-color)];
+.bg{
+  background-image: radial-gradient(circle at 99% 33%, rgba(19,244,32, 0.03) 0%, rgba(19,244,32, 0.03) 37%,transparent 37%, transparent 100%),radial-gradient(circle at 46% 16%, rgba(19,244,32, 0.03) 0%, rgba(19,244,32, 0.03) 43%,transparent 43%, transparent 100%),radial-gradient(circle at 99% 25%, rgba(19,244,32, 0.03) 0%, rgba(19,244,32, 0.03) 22%,transparent 22%, transparent 100%),radial-gradient(circle at 57% 88%, rgba(19,244,32, 0.03) 0%, rgba(19,244,32, 0.03) 86%,transparent 86%, transparent 100%),radial-gradient(circle at 82% 78%, rgba(19,244,32, 0.03) 0%, rgba(19,244,32, 0.03) 22%,transparent 22%, transparent 100%),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0));
 }
+
 .navBg{
-  @apply bg-[var(--main-color)]
+border-top:1px solid #1e2b1b;
+border-bottom:1px solid #1e2b1b;
+
+
+}
+.btnbg{
+  /* border-left:2px solid #0c3602;
+  border-right:2px solid #1e2b1b;
+  border-bottom:1px solid #0c3602;
+  border-top:1px solid #1e2b1b; */
+
 }
